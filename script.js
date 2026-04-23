@@ -1,7 +1,7 @@
 /* ─────────────────────────────────────────────
    TAB SWITCHING
 ───────────────────────────────────────────── */
-const tabBtns   = document.querySelectorAll('.tab-btn');
+const tabBtns = document.querySelectorAll('.tab-btn');
 const tabPanels = document.querySelectorAll('.tab-panel');
 
 tabBtns.forEach((btn) => {
@@ -23,10 +23,10 @@ tabBtns.forEach((btn) => {
 /* ─────────────────────────────────────────────
    LIGHT / DARK THEME TOGGLE
 ───────────────────────────────────────────── */
-const html      = document.documentElement;
-const themeBtn  = document.getElementById('theme-btn');
-const iconSun   = document.getElementById('icon-sun');
-const iconMoon  = document.getElementById('icon-moon');
+const html = document.documentElement;
+const themeBtn = document.getElementById('theme-btn');
+const iconSun = document.getElementById('icon-sun');
+const iconMoon = document.getElementById('icon-moon');
 
 // Restore saved theme
 const savedTheme = localStorage.getItem('devfolio-theme') || 'dark';
@@ -41,10 +41,10 @@ themeBtn.addEventListener('click', () => {
 function setTheme(theme) {
   html.setAttribute('data-theme', theme);
   if (theme === 'dark') {
-    iconSun.style.display  = 'block';
+    iconSun.style.display = 'block';
     iconMoon.style.display = 'none';
   } else {
-    iconSun.style.display  = 'none';
+    iconSun.style.display = 'none';
     iconMoon.style.display = 'block';
   }
 }
@@ -54,15 +54,15 @@ function setTheme(theme) {
 ───────────────────────────────────────────── */
 function handleSubmit(event) {
   event.preventDefault();
-  const btn     = document.getElementById('form-submit-btn');
+  const btn = document.getElementById('form-submit-btn');
   const success = document.getElementById('form-success');
 
   btn.textContent = 'Sending…';
-  btn.disabled    = true;
+  btn.disabled = true;
 
   setTimeout(() => {
     btn.textContent = 'Send Message';
-    btn.disabled    = false;
+    btn.disabled = false;
     event.target.reset();
     success.style.display = 'block';
     setTimeout(() => { success.style.display = 'none'; }, 4000);
@@ -126,19 +126,19 @@ document.addEventListener('DOMContentLoaded', () => {
 tabBtns.forEach((btn) => {
   btn.addEventListener('click', () => {
     const target = btn.dataset.tab;
-    const panel  = document.getElementById(`panel-${target}`);
+    const panel = document.getElementById(`panel-${target}`);
 
     // Stagger children
     const children = panel.querySelectorAll(
       '.proj-card, .resume-item, .skill-badge, .contact-item, .form-field, .form-heading, .social-icons'
     );
     children.forEach((child, i) => {
-      child.style.opacity   = '0';
+      child.style.opacity = '0';
       child.style.transform = 'translateY(12px)';
       child.style.transition = `opacity .35s ease ${i * 0.05}s, transform .35s ease ${i * 0.05}s`;
       requestAnimationFrame(() => {
         requestAnimationFrame(() => {
-          child.style.opacity   = '1';
+          child.style.opacity = '1';
           child.style.transform = '';
         });
       });
